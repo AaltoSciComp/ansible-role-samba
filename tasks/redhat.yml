@@ -1,5 +1,5 @@
 ---
-# tasks file for lucazz.symlinks
+# managa packages and enable service
 - name: install samba packages
   yum: name="{{ item }}" state=present
   with_items: samba_packages
@@ -10,7 +10,8 @@
     enabled: true
     state: running
 
-- name: Lustre modprobe.d confings
+# read all params from ansible, no defaults in the role
+- name: Samba confing
   template: src=smb.conf.j2 dest=/etc/samba/smb.conf
             owner=root group=root mode=0644
   notify: restart_samba
