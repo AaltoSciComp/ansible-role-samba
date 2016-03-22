@@ -1,0 +1,11 @@
+---
+# defaults file for ansible-role-samba
+
+samba_enabled: False
+samba_packages:
+  - samba
+  - samba-common
+  - samba-common-tools
+  - samba-libs
+
+samba_service: "smb"

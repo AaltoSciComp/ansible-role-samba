@@ -1,0 +1,17 @@
+---
+# tasks file for lucazz.symlinks
+- name: install samba packages
+  yum: name="{{ item }}" state=present
+  with_items: samba_packages
+
+- name: Service enabled and running
+  service:
+    name: "{{ samba_service }}"
+    enabled: true
+    state: running
+
+- name: Lustre modprobe.d confings
+  template: src=smb.conf.j2 dest=/etc/samba/smb.conf
+            owner=root group=root mode=0644
+  notify: restart_samba
+

@@ -1,0 +1,18 @@
+# for all options see http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html
+
+[global]
+# params from ansible
+{% for item in samba_global %}
+  "{{ item.keys()[0] }}" = "{{ item.values()[0] }}"
+{% endfor %}
+
+
+# shares                                                                                                                                     
+{% for share in samba_shares %}
+
+[{{ share }}]
+{% for item in samba_shares[share] %}
+  "{{ item.keys()[0] }}" = "{{ item.values()[0] }}"
+{% endfor %}
+{% endfor %}
+
