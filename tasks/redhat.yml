@@ -2,7 +2,7 @@
 # managa packages and enable service
 - name: install samba packages
   yum: name="{{ item }}" state=present
-  with_items: samba_packages
+  with_items: "{{ samba_packages }}"
 
 - name: Service enabled and running
   service:
