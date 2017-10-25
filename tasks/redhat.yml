@@ -11,7 +11,7 @@
     state: running
 
 # read all params from ansible, no defaults in the role
-- name: Samba confing
+- name: Samba config
   template: src=smb.conf.j2 dest=/etc/samba/smb.conf
             owner=root group=root mode=0644
   notify: restart_samba
