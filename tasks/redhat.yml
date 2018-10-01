@@ -1,8 +1,9 @@
 ---
 # managa packages and enable service
 - name: install samba packages
-  yum: name="{{ item }}" state=present
-  with_items: "{{ samba_packages }}"
+  yum: 
+    name: "{{ samba_packages }}"
+    state: present
 
 - name: Service enabled and running
   service:
@@ -12,7 +13,11 @@
 
 # read all params from ansible, no defaults in the role
 - name: Samba config
-  template: src=smb.conf.j2 dest=/etc/samba/smb.conf
-            owner=root group=root mode=0644
+  template:
+    src: smb.conf.j2
+    dest: /etc/samba/smb.conf
+    owner: root
+    group: root
+    mode: 0644
   notify: restart_samba
 
