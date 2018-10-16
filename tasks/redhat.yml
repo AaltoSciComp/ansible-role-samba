@@ -9,7 +9,7 @@
   service:
     name: "{{ samba_service }}"
     enabled: true
-    state: running
+    state: started
 
 # read all params from ansible, no defaults in the role
 - name: Samba config
