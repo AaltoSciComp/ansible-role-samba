@@ -5,12 +5,6 @@
     name: "{{ samba_packages }}"
     state: present
 
-- name: Service enabled and running
-  service:
-    name: "{{ samba_service }}"
-    enabled: true
-    state: started
-
 # read all params from ansible, no defaults in the role
 - name: Samba config
   template:
@@ -21,3 +15,8 @@
     mode: 0644
   notify: restart_samba
 
+- name: Service enabled and running
+  service:
+    name: "{{ samba_service }}"
+    enabled: true
+    state: started
