@@ -3,7 +3,7 @@
 [global]
 # params from ansible
 {% for item in samba_global %}
-  "{{ item.keys()[0] }}" = "{{ item.values()[0] }}"
+  {{ item.keys()[0] }} = {{ item.values()[0] }}
 {% endfor %}
 
 
@@ -12,7 +12,7 @@
 
 [{{ share }}]
 {% for item in samba_shares[share] %}
-  "{{ item.keys()[0] }}" = "{{ item.values()[0] }}"
+  {{ item.keys()[0] }} = {{ item.values()[0] }}
 {% endfor %}
 {% endfor %}
 
