@@ -9,3 +9,6 @@ samba_packages:
   - samba-libs
 
 samba_service: "smb"
+
+samba_manage_winbind: True
+samba_winbind_service: "winbind.service"

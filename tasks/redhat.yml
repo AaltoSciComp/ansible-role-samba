@@ -20,3 +20,10 @@
     name: "{{ samba_service }}"
     enabled: true
     state: started
+
+- name: Enable and start winbind
+  service:
+    name: "{{ samba_winbind_service }}"
+    enabled: true
+    state: started
+  when: samba_manage_winbind
