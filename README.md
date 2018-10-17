@@ -55,5 +55,5 @@ Apache License version 2.0
 Author Information
 ------------------
 
-https://github.com/mhakala
-https://github.com/jabl
+- https://github.com/mhakala
+- https://github.com/jabl
