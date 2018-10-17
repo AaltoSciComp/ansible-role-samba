@@ -1,5 +1,5 @@
-Role Name
-=========
+ansible-role-samba
+==================
 
 This role sets default configurations for samba and allows to override those via variables. Shares are also defined 
 as a configurable block. 
@@ -7,7 +7,9 @@ as a configurable block.
 Requirements
 ------------
 
-Written to work as a standalone role. Tested with ansible 1.9.4. 
+Written to work as a standalone role. Tested with ansible 2.7.0. Note
+that it doesn't join the node to a domain, that must be done
+separately.
 
 Role Variables
 --------------
@@ -15,6 +17,9 @@ Role Variables
 samba_enabled (default false) - for automation purposes simple switch to disable/enable the role
 samba_global (default none) - global configuration for samba
 samba_shares (default none) - definition of shares
+samba_service_name (default smb) - Name of samba service
+samba_manage_winbind (default true) - Should the role manage the winbind service
+samba_winbind_service (default winbind.service) - Name of winbind service
 
 Examples:
 
@@ -31,7 +36,7 @@ samba_shares:
 Dependencies
 ------------
 
-Written to work as a standalone role. Tested with ansible 1.9.4.
+Written to work as a standalone role. Tested with ansible 2.7.0.
 
 Example Playbook
 ----------------
@@ -51,3 +56,4 @@ Author Information
 ------------------
 
 https://github.com/mhakala
+https://github.com/jabl
