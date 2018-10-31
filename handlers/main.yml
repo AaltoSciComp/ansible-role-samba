@@ -1,7 +1,14 @@
 # handlers file for ansible-role-samba
 
-- name: restart_samba
+- name: restart winbind
+  listen: restart_samba
+  service:
+    name: "{{ samba_winbind_service }}"
+    state: restarted
+  when: samba_manage_winbind
+
+- name: restart samba
+  listen: restart_samba
   service:
     name: "{{ samba_service }}"
     state: restarted
-
