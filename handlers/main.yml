@@ -5,10 +5,11 @@
   service:
     name: "{{ samba_winbind_service }}"
     state: restarted
-  when: samba_manage_winbind
+  when: samba_manage_winbind and samba_service_state != 'stopped'
 
 - name: restart samba
   listen: restart_samba
   service:
     name: "{{ samba_service }}"
     state: restarted
+  when: samba_service_state != 'stopped'
