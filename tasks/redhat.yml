@@ -19,11 +19,11 @@
   service:
     name: "{{ samba_winbind_service }}"
     enabled: true
-    state: started
+    state: "{{ samba_service_state }}"
   when: samba_manage_winbind
 
 - name: Service enabled and running
   service:
     name: "{{ samba_service }}"
     enabled: true
-    state: started
+    state: "{{ samba_service_state }}"
