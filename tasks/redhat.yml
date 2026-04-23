@@ -1,9 +1,17 @@
 ---
 # managa packages and enable service
 - name: install samba packages
-  yum: 
+  package:
     name: "{{ samba_packages }}"
     state: present
+
+- name: Copy custom Samba VFS modules
+  copy:
+    src: "{{ item }}"
+    dest: /usr/lib64/samba/vfs/
+    mode: '0644'
+  loop: "{{ samba_custom_vfs }}"
+  when: samba_custom_vfs is defined and samba_custom_vfs | length > 0
 
 # read all params from ansible, no defaults in the role
 - name: Samba config
