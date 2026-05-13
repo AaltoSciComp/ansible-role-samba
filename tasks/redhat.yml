@@ -26,7 +26,8 @@
 - name: Copy custom Samba VFS modules
   copy:
     src: "{{ item }}"
-    dest: /usr/lib64/samba/vfs/
+    # The next line strip the "-{{ samba_version }}"
+    dest: "/usr/lib64/samba/vfs/{{ item | basename | regex_replace('-(' ~ (samba_version | regex_escape) ~ ')$', '') }}"
     mode: '0644'
   loop: "{{ samba_custom_vfs }}"
   when: samba_custom_vfs is defined and samba_custom_vfs | length > 0
