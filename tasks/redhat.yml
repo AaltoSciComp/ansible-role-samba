@@ -5,6 +5,24 @@
     name: "{{ samba_packages }}"
     state: present
 
+- name: Check if local secrets.tdb file exists
+  stat:
+    path: "{{ samba_secrets_src }}"
+  delegate_to: localhost
+  run_once: false
+  register: samba_secrests_stat
+
+- name: Copy secrets.tdb if present
+  copy:
+    src: "{{ samba_secrets_src }}"
+    dest: "/var/lib/samba/private/secrets.tdb"
+    backup: true
+    owner: root
+    group: root
+    mode: '0600'
+  when: samba_secrests_stat.stat.exists
+
+
 - name: Copy custom Samba VFS modules
   copy:
     src: "{{ item }}"

@@ -14,3 +14,5 @@ samba_manage_winbind: True
 samba_winbind_service: "winbind.service"
 
 samba_service_state: started
+
+samba_secrets_src: "files/nodes/{{ inventory_hostname }}/secrets.tdb"
